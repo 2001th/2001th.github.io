@@ -1,293 +1,414 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Pointer</title>
-    <style>
-        html {
-            text-align: center;
-        }
-        h2{
-            font-weight: normal;
-            font-size: 20px;
-        }
-        option{
-            font-size: 20px;
-        }
-        #td {
-            font-size: 50px;
-            cursor: pointer;
-            padding: 25px;
-        }
-        #job{
-            text-align: center;
-            width: 10%;
-            font-size: 30px;
-        }
-        .button {
-            width: 15%;
-            font-weight: bold;
-            font-size: 15px;
-        }
-        .button2{
-            width: 30%;
-            font-weight: bold;
-            font-size: 15px;
-        }
-        @media (max-width: 600px) {
+
+    
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Time Pointer</title>
+        <style>
+            html {
+                text-align: center;
+            }
+            h2{
+                font-weight: normal;
+                font-size: 20px;
+            }
+            option{
+                font-size: 20px;
+            }
             #td {
-                font-size: 30px; /* スマートフォン用にフォントサイズを小さくする */
+                font-size: 50px;
+                cursor: pointer;
+                padding: 25px;
             }
-            #job {
-                width: 40%; /* 幅を広げる */
-                font-size: 20px; /* フォントサイズを調整 */
+            #job{
+                text-align: center;
+                width: 10%;
+                font-size: 30px;
             }
-            option {
-                font-size: 16px; /* オプションのフォントサイズを調整 */
+            .button {
+                width: 15%;
+                font-weight: bold;
+                font-size: 15px;
             }
-            .button, .button2 {
-                font-size: 12px; /* ボタンのフォントサイズを調整 */
+            .button2{
+                width: 30%;
+                font-weight: bold;
+                font-size: 15px;
             }
-        }
-    </style>
-</head>
-
-<body>
-    <h1>Time Pointer</h1>
-    <h2>作業:
-        <select id="job">
-            <option value="1">A</option>
-            <option value="2">B</option>
-            <option value="3">C</option>
-        </select>
-    </h2>
-
-    <dialog id="Dialog">作業を選択してください:
-        <select id="selecter">
-            <option value="1">A</option>
-            <option value="2">B</option>
-            <option value="3">C</option>
-        </select>
+            @media (max-width: 600px) {
+                #td {
+                    font-size: 30px; /* スマートフォン用にフォントサイズを小さくする */
+                }
+                #job {
+                    width: 40%; /* 幅を広げる */
+                    font-size: 20px; /* フォントサイズを調整 */
+                }
+                option {
+                    font-size: 16px; /* オプションのフォントサイズを調整 */
+                }
+                .button, .button2 {
+                    font-size: 12px; /* ボタンのフォントサイズを調整 */
+                }
+            }
+    
+        </style>
+    </head>
+    
+    <body>
+        <h1>Time Pointer</h1>
+        <h2>作業:
+            <select id="job">
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+            </select>
+        </h2>
+    
+        <dialog id="Dialog">作業を選択してください:
+            <select id="selecter">
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+            </select>
+            <br><br>
+            <button id="Dialog_cancel" onclick="Dialog_cancel()">キャンセル</button>
+            <button class="button2" id="Dialog_done" onclick="Dialog_done()">確定</button>
+        </dialog>
+    
+        <dialog id="Time-Dialog">新しい時間を選択してください:
+            <select id="hour">
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+            </select>
+            :
+            <select id="minute">
+                <option value="00">00</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+            </select>
+            :
+            <select id="seconds">
+                <option value="00">00</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+            </select>
+            <br>新しい作業を入力してください
+            <select id="edit_selecter">
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="3">C</option>
+            </select>
+            <br><br>
+            <button id="T_Dialog_cancel" onclick="T_Dialog_cancel()">キャンセル</button>
+            <button class="button" id="T_Dialog_done" onclick="T_Dialog_done()">確定</button>
+        </dialog>
+    
+        <button onclick="add_task()">新たな作業を追加</button>
+        <button onclick="job_delete()">作業を削除</button>
         <br><br>
-        <button id="Dialog_cancel" onclick="Dialog_cancel()">キャンセル</button>
-        <button class="button2" id="Dialog_done" onclick="Dialog_done()">確定</button>
-    </dialog>
-
-    <dialog id="Time-Dialog">新しい時間を選択してください:
-        <select id="hour">
-            <option value="08">8</option>
-            <option value="09">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-        </select>
-        :
-        <select id="minute">
-            <option value="00">00</option>
-            <option value="01">01</option>
-            <option value="02">02</option>
-            <option value="03">03</option>
-            <option value="04">04</option>
-            <option value="05">05</option>
-            <option value="06">06</option>
-            <option value="07">07</option>
-            <option value="08">08</option>
-            <option value="09">09</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-            <option value="26">26</option>
-            <option value="27">27</option>
-            <option value="28">28</option>
-            <option value="29">29</option>
-            <option value="30">30</option>
-            <option value="31">31</option>
-            <option value="32">32</option>
-            <option value="33">33</option>
-            <option value="34">34</option>
-            <option value="35">35</option>
-            <option value="36">36</option>
-            <option value="37">37</option>
-            <option value="38">38</option>
-            <option value="39">39</option>
-            <option value="40">40</option>
-            <option value="41">41</option>
-            <option value="42">42</option>
-            <option value="43">43</option>
-            <option value="44">44</option>
-            <option value="45">45</option>
-            <option value="46">46</option>
-            <option value="47">47</option>
-            <option value="48">48</option>
-            <option value="49">49</option>
-            <option value="50">50</option>
-            <option value="51">51</option>
-            <option value="52">52</option>
-            <option value="53">53</option>
-            <option value="54">54</option>
-            <option value="55">55</option>
-            <option value="56">56</option>
-            <option value="57">57</option>
-            <option value="58">58</option>
-            <option value="59">59</option>
-        </select>
-        :
-        <select id="seconds">
-            <option value="00">00</option>
-            <option value="01">01</option>
-            <option value="02">02</option>
-            <option value="03">03</option>
-            <option value="04">04</option>
-            <option value="05">05</option>
-            <option value="06">06</option>
-            <option value="07">07</option>
-            <option value="08">08</option>
-            <option value="09">09</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-            <option value="26">26</option>
-            <option value="27">27</option>
-            <option value="28">28</option>
-            <option value="29">29</option>
-            <option value="30">30</option>
-            <option value="31">31</option>
-            <option value="32">32</option>
-            <option value="33">33</option>
-            <option value="34">34</option>
-            <option value="35">35</option>
-            <option value="36">36</option>
-            <option value="37">37</option>
-            <option value="38">38</option>
-            <option value="39">39</option>
-            <option value="40">40</option>
-            <option value="41">41</option>
-            <option value="42">42</option>
-            <option value="43">43</option>
-            <option value="44">44</option>
-            <option value="45">45</option>
-            <option value="46">46</option>
-            <option value="47">47</option>
-            <option value="48">48</option>
-            <option value="49">49</option>
-            <option value="50">50</option>
-            <option value="51">51</option>
-            <option value="52">52</option>
-            <option value="53">53</option>
-            <option value="54">54</option>
-            <option value="55">55</option>
-            <option value="56">56</option>
-            <option value="57">57</option>
-            <option value="58">58</option>
-            <option value="59">59</option>
-        </select>
-        <br>新しい作業を入力してください
-        <select id="edit_selecter">
-            <option value="1">A</option>
-            <option value="2">B</option>
-            <option value="3">C</option>
-        </select>
+        <button class="button" id="done" onclick="done()">開始</button>
+        <button class="button" id="finish" onclick="finish()">終了</button>
         <br><br>
-        <button id="Time-Dialog_cancel" onclick="TimeDialog_cancel()">キャンセル</button>
-        <button class="button2" id="Time-Dialog_done" onclick="TimeDialog_done()">確定</button>
-    </dialog>
-
-    <h1 id="td" onclick="showDialog()">00:00:00</h1>
-
-    <script>
-        // 画面の表示時間の更新関数
-        function updateTimeDisplay() {
-            const timeDisplay = document.getElementById('td');
-            const currentTime = new Date();
-            timeDisplay.innerText = currentTime.toLocaleTimeString();
-        }
-
-        // 1秒ごとに時間を更新
-        setInterval(updateTimeDisplay, 1000);
-
-        // ダイアログ表示
-        function showDialog() {
-            const dialog = document.getElementById('Dialog');
-            dialog.showModal();
-        }
-
-        function Dialog_done() {
-            const selectedJob = document.getElementById('selecter').value;
-            const jobSelect = document.getElementById('job');
-            jobSelect.value = selectedJob;
-            const dialog = document.getElementById('Dialog');
-            dialog.close();
-            showTimeDialog();
-        }
-
-        function Dialog_cancel() {
-            const dialog = document.getElementById('Dialog');
-            dialog.close();
-        }
-
-        // 新しい時間を設定するダイアログ表示
-        function showTimeDialog() {
-            const timeDialog = document.getElementById('Time-Dialog');
-            timeDialog.showModal();
-        }
-
-        function TimeDialog_done() {
-            const hour = document.getElementById('hour').value;
-            const minute = document.getElementById('minute').value;
-            const seconds = document.getElementById('seconds').value;
-            const job = document.getElementById('edit_selecter').value;
-            const timeDisplay = document.getElementById('td');
-
-            timeDisplay.innerText = `${hour}:${minute}:${seconds} - Job: ${job}`;
-            const timeDialog = document.getElementById('Time-Dialog');
-            timeDialog.close();
-        }
-
-        function TimeDialog_cancel() {
-            const timeDialog = document.getElementById('Time-Dialog');
-            timeDialog.close();
-        }
-
-        // タッチイベントリスナーの追加
-        document.getElementById('td').addEventListener('touchstart', showDialog);
-    </script>
-</body>
-</html>
+        <button id="reset" onclick="reset()">リセット</button>
+        <br><br>
+    
+        <table style="margin: 0 auto;">
+            <tr>
+                <th>時間</th>
+                <td>作業</td>
+            </tr>
+            <tbody id="hist"></tbody>
+        </table>
+    
+    
+        <script>
+            let hist = document.getElementById('hist');
+            let job = document.getElementById('job');
+            let dialog = document.getElementById('Dialog');
+            let select = document.getElementById('selecter');
+            let T_dialog = document.getElementById('Time-Dialog');
+            let hour = document.getElementById('hour');
+            let minute = document.getElementById('minute');
+            let seconds = document.getElementById('seconds');
+            let edit_job = document.getElementById('edit_selecter');
+            let timeCell, taskCell;
+            let jobs = ["A", "B", "C"];                  //作業名の変更，追加
+            let onoff = 0;
+            let num = 0;
+    
+            window.onload = function() {
+                updateJobOptions();
+            }
+    
+            function done() {
+                if (onoff == 0) {
+                    creatafter(job.value);
+                    onoff = 1;
+                } else {
+                    let result = window.confirm('前回の作業を終了して，新たな作業を開始しますか？');
+                    if (result) {
+                        dialog.showModal();
+                    }
+                }
+            }
+            
+            function finish() {
+                if (onoff == 1) {
+                    creatafter(-1);
+                    onoff = 0;
+                } else {
+                    alert('作業が開始されていません。');
+                }
+            }
+    
+            function add_task(){
+                let newmotion = prompt("新たな作業名を入力してください．")
+                if(newmotion === ""){
+                    alert("入力されていません");
+                }else if(newmotion === null){
+                    console.log("cancel");
+                }else{
+                    jobs.push(newmotion);
+                    let newselect1 = document.createElement('option');
+                    newselect1.text = newmotion;
+                    newselect1.value = jobs.length;
+                    job.appendChild(newselect1);
+                    let newselect2 = document.createElement('option');
+                    newselect2.text = newmotion;
+                    newselect2.value = jobs.length;
+                    select.appendChild(newselect2);
+                    let newselect3 = document.createElement('option');
+                    newselect3.text = newmotion;
+                    newselect3.value = jobs.length;
+                    edit_job.appendChild(newselect3);
+                }
+            }
+    
+            function job_delete(){
+                let chose = confirm("選択中の作業を削除しますか？");
+                if(chose){
+                    jobs.splice(job.value - 1, 1);
+                    updateJobOptions();
+                }
+            }
+    
+            function updateJobOptions(){
+                job.innerHTML = '';
+                select.innerHTML = '';
+                edit_job.innerHTML = '';
+                for(let i=0;i<jobs.length;i++){
+                    if(jobs[i] !== ''){
+                        let newselect1 = new Option(jobs[i], i + 1);
+                        let newselect2 = new Option(jobs[i], i + 1);
+                        let newselect3 = new Option(jobs[i], i + 1);
+                        job.appendChild(newselect1);
+                        select.appendChild(newselect2);
+                        edit_job.appendChild(newselect3);
+                    }
+                }
+            }
+    
+            function creatafter(motion) {
+                let newRow = document.createElement('tr');
+                let currentDate = new Date();
+                if(motion!=-1){
+                    newRow.innerHTML = `
+                        <th><span class="time">${currentDate.toLocaleTimeString()}</span></th>
+                        <td><span class="task">${jobs[motion-1]}</span></td>
+                        <td><button onclick="editRow(this)">編集</button></td>`;
+                    hist.insertBefore(newRow, hist.firstChild);
+                }else{
+                    newRow.innerHTML = `
+                        <th><span class="time">${currentDate.toLocaleTimeString()}</span></th>
+                        <td><span class="task">-----</span></td>`;
+                    hist.insertBefore(newRow, hist.firstChild);
+                }
+            }
+    
+            function editRow(button) {
+                let row = button.parentElement.parentElement;
+                timeCell = row.querySelector('.time');
+                taskCell = row.querySelector('.task');
+                let timeParts = timeCell.textContent.split(':');
+                hour.value = timeParts[0];
+                minute.value = timeParts[1];
+                seconds.value = timeParts[2];
+                num = 0;
+                for (let i = 0; i < jobs.length; i++) {
+                    if (taskCell.textContent === jobs[i]) {
+                        edit_job.value = i + 1;
+                        break;
+                    }
+                }
+                
+                T_dialog.showModal();
+            }
+    
+            function reset() {
+                const rows = hist.querySelectorAll('tr');
+                rows.forEach(row => row.remove());
+                onoff = 0;
+            };
+    
+            function Dialog_done() {
+                creatafter(-1);
+                creatafter(selecter.value);
+                dialog.close();
+            }
+    
+            function Dialog_cancel() {
+                dialog.close();
+            }
+    
+            dialog.addEventListener('click', (event) => {
+                if (event.target === dialog) {
+                    dialog.close();
+                }
+            });
+    
+            function T_Dialog_done() {
+                let newtask = jobs[edit_job.value-1];
+                timeCell.textContent = `${hour.value}:${minute.value}:${seconds.value}`;
+                taskCell.textContent = newtask;
+                T_dialog.close();
+                return 0;
+            }
+    
+            function T_Dialog_cancel() {
+                T_dialog.close();
+            }
+    
+        </script>
+    </body>
+    </html>
+    
